@@ -1,0 +1,22 @@
+{
+  "name": "chicken_bot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./build/main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npx tsc",
+    "run": "npx tsc && node ./build/main.js"
+  },
+  "author": "TheOneMaster",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.11.0",
+    "dotenv": "^16.3.1"
+  },
+  "devDependencies": {
+    "@types/node": "^20.3.3",
+    "prettier": "2.8.8",
+    "typescript": "^5.1.6"
+  }
+}
