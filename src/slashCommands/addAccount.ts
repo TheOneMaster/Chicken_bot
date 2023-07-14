@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from "discord.js";
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { SlashCommand } from "../types";
 import { getAccountDetails, getAccountRank } from "../riotAPI/accountDetails";
 
@@ -27,7 +27,16 @@ const command: SlashCommand = {
         const details = await getAccountDetails(username, tag);
         const rank = await getAccountRank(details.region, details.puuid);
 
-        await interaction.editReply(`Added account: ${username}#${tag} - ${rank.currenttierpatched} ${rank.ranking_in_tier} MMR`);
+        const trackerUrl = `https://tracker.gg/valorant/profile/riot/${username}%23${tag}`;
+
+        const messageEmbed = new EmbedBuilder().setTitle(`${username}#${tag}`)
+            .setColor(0x20a142)
+            .setURL(trackerUrl)
+            .setImage(details.card?.large ?? null)
+            .setFooter({ iconURL: rank.images.large, text: rank.currenttierpatched })
+
+
+        await interaction.editReply({ embeds: [messageEmbed] });
     }
 }
 

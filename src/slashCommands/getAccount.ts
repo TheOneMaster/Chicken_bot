@@ -1,4 +1,4 @@
-import { SlashCommandBuilder, bold, underscore } from "discord.js";
+import { EmbedBuilder, SlashCommandBuilder } from "discord.js";
 import { SlashCommand } from "../types";
 
 const command: SlashCommand = {
@@ -21,13 +21,16 @@ const command: SlashCommand = {
         const { user } = interaction;
         const region = interaction.options.getString("region", true);
 
-        const header = underscore(bold(`Account Details (${region.toUpperCase()})`));
+        const embedMessage = new EmbedBuilder().setTitle(`Account Details ${region.toUpperCase()}`)
+            .setColor(0x0099FF)
+            .setAuthor({ name: "Chicken Bot" })
+            .setURL("https://github.com/TheOneMaster/Chicken_bot")
+            .addFields(
+                { name: "Accounts", value: "Lorem Ipsum" }
+            )
+            .setTimestamp();
 
-        const finalMessage = `${header}
-        1. Lorem Ipsum
-        2. Dolor Sit Amet`;
-
-        await interaction.editReply(finalMessage)
+        await interaction.editReply({ embeds: [embedMessage] })
 
     }
 }
