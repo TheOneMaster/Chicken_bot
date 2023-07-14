@@ -6,7 +6,7 @@ export type AccountDetails = {
     account_level: number
     name: string
     tag: string
-    card: {
+    card?: {
         small: string
         large: string
         wide: string
