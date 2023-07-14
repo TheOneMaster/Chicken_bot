@@ -1,10 +1,10 @@
-import { CommandInteraction, SlashCommandBuilder } from "discord.js";
+import { ChatInputCommandInteraction, SlashCommandBuilder } from "discord.js";
 
 export interface SlashCommand {
-    command: SlashCommandBuilder
-    execute: (interaction: CommandInteraction) => Promise<void>
-}
+    command: Omit<SlashCommandBuilder, "addSubcommandGroup" | "addSubcommand">
+    execute: (interaction: ChatInputCommandInteraction) => Promise<void>
 
+}
 // Add types for env file
 declare global {
     namespace NodeJS {
