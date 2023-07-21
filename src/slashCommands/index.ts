@@ -13,4 +13,4 @@ export const slashCommands = new Collection<string, SlashCommand>();
 // IE: this insanity https://discordjs.guide/creating-your-bot/command-handling.html#loading-command-files
 
 slashCommands.set(getAccount.command.name, getAccount);
-slashCommands.set(addAccount.command.name, addAccount);
+// slashCommands.set(addAccount.command.name, addAccount);
