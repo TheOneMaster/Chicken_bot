@@ -1,7 +1,8 @@
-import "dotenv/config";
 import { Client, Events, GatewayIntentBits } from "discord.js";
+import "dotenv/config";
 
 // import Account from "./slashCommands/account"
+import { AppDataSource } from "./data-source";
 import { slashCommands } from "./slashCommands";
 
 const TOKEN = process.env["TOKEN"];
@@ -28,5 +29,12 @@ client.on(Events.InteractionCreate, async (interaction) => {
     return;
 })
 
+async function main() {
+    await AppDataSource.initialize();
 
-client.login(TOKEN);
+    console.log("Connected to the database");
+
+    client.login(TOKEN)
+}
+
+main()
