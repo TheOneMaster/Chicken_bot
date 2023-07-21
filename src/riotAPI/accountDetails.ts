@@ -17,8 +17,19 @@ export async function getAccountDetails(username: string, tag: string) {
     return jsonData.data as AccountDetails
 }
 
-async function getPUUIDDetails(puuid: string) {
+export async function getPUUIDDetails(puuid: string) {
+    const getUrl = `${API_URL}/valorant/v1/by-puuid/account/${puuid}`;
 
+    const details = await fetch(getUrl, {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json",
+            "X-Exclude-Invalid": "true"
+        }
+    });
+
+    const jsonData = await details.json();
+    return jsonData.data as AccountDetails
 }
 
 export async function getAccountRank(region: Region, puuid: string) {
